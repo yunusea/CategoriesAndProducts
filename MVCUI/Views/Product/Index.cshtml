@@ -1,0 +1,101 @@
+﻿
+<h1>Product List</h1>
+<input type="submit" class="btn btn-block" name="OnAddProduct" value="Add" ng-click="OnAddProduct()" id="btnOnAddProduct" />
+<table class="table table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Category ID</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Price Vat</th>
+        <th>Unit In Stock</th>
+        <th>Query</th>
+    </tr>
+    <tr ng-repeat="product in AllProductList">
+        <td>{{product.ProductID}}</td>
+        <td>{{product.Category.CategoryName}}</td>
+        <td>{{product.ProductName }}</td>
+        <td>{{product.Price}}</td>
+        <td>{{product.PriceVat}}</td>
+        <td>{{product.UnitInStock}}</td>
+        <td><input type="submit" class="btn btn-default" value="Edit" ng-click="EditProduct(product.ProductID)" id="btnEditProduct" /><input type="submit" class="btn btn-default" value="Delete" ng-click="DeleteProduct(product.ProductID)" id="btnDeleteProduct" /> </td>
+    </tr>
+</table>
+
+<div class="col-md-12" id="add" style="display:none">
+    <h2>Add Product</h2>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-6">Category : </label>
+            <div class="col-md-6">
+                <select ng-model="categories" ng-options="category.CategoryID as category.CategoryName for category in AllCategoryList"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-6">Product Name : </label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" ng-model="AddProductName" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-6">Stock : </label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" ng-model="AddStock" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-6">Price : </label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" ng-model="AddPrice" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <input type="submit" class="btn btn-block" name="AddProduct" value="Add" ng-click="AddProduct()" id="btnAddProduct" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12" id="update" style="display:none">
+    <h2>Update Product</h2>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-6">Category : </label>
+            <div class="col-md-6">
+                <select ng-model="UptCategoryID" ng-options="category.CategoryID as category.CategoryName for category in AllCategoryList"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-6">Product Name : </label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" ng-model="UptProductName" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-6">Stock : </label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" ng-model="UptStock" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-6">Price : </label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" ng-model="UptPrice" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-6">Price Vat: </label>
+            <div class="col-md-6">
+                {{PriceVat}}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <input type="submit" class="btn btn-block" name="UpdateProduct" value="Update" ng-click="UpdateProduct(Id)" id="btnUpdateProduct" />
+            </div>
+        </div>
+    </div>
+</div>
